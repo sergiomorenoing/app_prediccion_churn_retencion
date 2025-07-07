@@ -9,13 +9,13 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Demo Telco: Predicción de Churn", layout="wide")
 
-st.title("🔮 Demo IA Telco — Predicción de Fuga de Clientes (Churn)")
+st.title(" Demo IA Telco — Predicción de Fuga de Clientes (Churn)")
 st.markdown("""
 Este demo interactivo simula cómo un algoritmo de **Machine Learning** ayuda a predecir la fuga de clientes en una empresa Telco, permitiendo tomar acciones proactivas para retenerlos.
 """)
 
 # --- 1. SIMULACIÓN DE DATOS ---
-with st.expander("1️⃣ ¿Cómo se crean los datos del demo? (Simulación realista)"):
+with st.expander("1️ ¿Cómo se crean los datos del demo? (Simulación realista)"):
     st.info(
         "Se genera un conjunto de datos **Simulados** que representa clientes de Telco, "
         "con variables como edad, antigüedad, reclamos, pagos atrasados, consumo de datos, tipo de plan y satisfacción. "
@@ -41,7 +41,7 @@ data['Churn'] = (
 data['Churn'] = np.where(np.random.rand(N) < 0.07, 1-data['Churn'], data['Churn'])
 
 # --- 2. PREPROCESAMIENTO ---
-with st.expander("2️⃣ ¿Cómo se preparan los datos? (Preprocesamiento)"):
+with st.expander("2️ ¿Cómo se preparan los datos? (Preprocesamiento)"):
     st.info(
         "Las variables de tipo texto, como 'Tipo de plan', se convierten a variables numéricas "
         "(one-hot encoding). Se separan los datos en conjuntos de entrenamiento y prueba, "
@@ -54,7 +54,7 @@ y = data_enc['Churn']
 X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=0.25, random_state=42)
 
 # --- 3. ENTRENAMIENTO DEL MODELO ---
-with st.expander("3️⃣ ¿Qué modelo se usa y cómo aprende?"):
+with st.expander("3️ ¿Qué modelo se usa y cómo aprende?"):
     st.info(
         "Se utiliza un **Random Forest Classifier**, un modelo de Machine Learning que combina muchos árboles de decisión "
         "para clasificar clientes según su probabilidad de fuga. El modelo aprende patrones a partir de los datos históricos."
@@ -67,7 +67,7 @@ roc = roc_auc_score(y_test, y_pred_proba)
 cm = confusion_matrix(y_test, (y_pred_proba>0.5).astype(int))
 
 # --- 4. EVALUACIÓN DEL MODELO ---
-with st.expander("4️⃣ ¿Cómo sabemos si el modelo es bueno? (Evaluación)"):
+with st.expander("4️ ¿Cómo sabemos si el modelo es bueno? (Evaluación)"):
     st.info(
         "- El **AUC** mide la capacidad del modelo para distinguir clientes que se van vs. los que se quedan. "
         "Un valor cercano a 1 es muy bueno. \n"
@@ -92,7 +92,7 @@ Permite priorizar esfuerzos: los equipos de retención pueden enfocar campañas 
 """.format(roc))
 
 # --- 5. IMPORTANCIA DE VARIABLES ---
-with st.expander("5️⃣ ¿Qué variables influyen más en la fuga de clientes?"):
+with st.expander("5️ ¿Qué variables influyen más en la fuga de clientes?"):
     st.info(
         "El modelo identifica qué variables son **más importantes** para predecir el churn, ayudando a "
         "priorizar dónde intervenir (por ejemplo: satisfacción, reclamos, pagos atrasados, etc.)."
@@ -117,7 +117,7 @@ Saber qué factores impactan la fuga permite diseñar acciones focalizadas (por 
 """)
 
 # --- 6. CLIENTES EN RIESGO ---
-with st.expander("6️⃣ ¿Quiénes son los clientes en mayor riesgo?"):
+with st.expander("6️ ¿Quiénes son los clientes en mayor riesgo?"):
     st.info(
         "Se identifican los clientes con mayor probabilidad de fuga, para priorizar acciones de retención "
         "personalizadas y evitar pérdidas."
@@ -140,7 +140,7 @@ Esta tabla muestra a los clientes con mayor riesgo de fuga. Se recomienda:
 """)
 
 # --- 7. DISTRIBUCIÓN DE RIESGO ---
-with st.expander("7️⃣ ¿Cómo se distribuye el riesgo de fuga en la base de clientes?"):
+with st.expander("7️ ¿Cómo se distribuye el riesgo de fuga en la base de clientes?"):
     st.info(
         "Esta gráfica muestra la distribución de probabilidades de fuga para todos los clientes, "
         "ayudando a visualizar cuántos están en zona crítica y dónde enfocar recursos."
@@ -162,7 +162,7 @@ Permite definir el tamaño de campañas, estimar impacto potencial y ajustar la 
 """)
 
 # --- 8. MAPA DE CALOR DE SEGMENTOS ---
-with st.expander("8️⃣ ¿En qué segmentos hay más riesgo de fuga? (Mapa de calor)"):
+with st.expander("8️ ¿En qué segmentos hay más riesgo de fuga? (Mapa de calor)"):
     st.info(
         "El mapa de calor permite ver combinaciones de variables críticas (como reclamos y satisfacción) "
         "donde se concentra el mayor riesgo de churn. Así se detectan segmentos a priorizar."
@@ -191,7 +191,7 @@ Enfoca los esfuerzos y recursos en los segmentos críticos, logrando mayor efici
 
 # --- 9. ANÁLISIS DE CLIENTES QUE SE QUEDAN (NO CHURN) ---
 
-with st.expander("9️⃣ ¿Cómo son los clientes fieles y cómo aprovecharlos?"):
+with st.expander("9️ ¿Cómo son los clientes fieles y cómo aprovecharlos?"):
     st.info(
         "Además de identificar el riesgo, es clave conocer el perfil de los clientes fieles. "
         "Esto permite potenciar la fidelización y detectar oportunidades de venta cruzada."
